@@ -41,12 +41,10 @@ const Home = () => {
   );
 };
 
-{
-  /* <BlogList
+/* <BlogList
             blogs={blogs}
             title="All Blogs!"
             //   handleDelete={handleDelete}
           /> */
-}
 
 export default Home;

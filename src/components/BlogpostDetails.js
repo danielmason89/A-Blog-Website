@@ -2,8 +2,8 @@
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import useFetch from "../useFetch";
 
-// date fns 
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+// date fns
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const BlogDetails = ({ blogpost }) => {
   const { dispatch } = useBlogpostsContext();
@@ -40,14 +40,18 @@ const BlogDetails = ({ blogpost }) => {
           <p>
             <strong>{blogpost.body}</strong>
           </p>
-          <p>{formatDistanceToNow(new Date(blogpost.createdAt), {addSuffix: true}) }</p>
+          <p>
+            {formatDistanceToNow(new Date(blogpost.createdAt), {
+              addSuffix: true,
+            })}
+          </p>
           <span>
             <button
               aria-label="delete"
               className="material-symbols-outlined"
               onClick={handleClick}
             >
-              
+              delete
             </button>
           </span>
         </article>

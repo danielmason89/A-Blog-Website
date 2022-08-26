@@ -15,7 +15,8 @@ const BlogDetails = ({ blogpost }) => {
 
   const handleClick = async () => {
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts" + blogpost._id,
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" +
+        blogpost._id,
       {
         method: "DELETE",
       }

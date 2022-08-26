@@ -8,7 +8,9 @@ import BlogpostForm from "../components/BlogpostForm";
 
 const Home = () => {
   const { blogposts, dispatch } = useBlogpostsContext();
-  const { isPending, error } = useFetch("http://localhost:4000/api/blogposts");
+  const { isPending, error } = useFetch(
+    "https://gentle-plateau-25780.herokuapp.com/api/blogposts"
+  );
   //   const handleDelete = (id) => {
   //     const newBlogs = blogs.filter((blog) => blog.id !== id);
   //     setBlogs(newBlogs);
@@ -16,7 +18,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchBlogposts = async () => {
-      const response = await fetch("http://localhost:4000/api/blogposts");
+      const response = await fetch(
+        "https://gentle-plateau-25780.herokuapp.com/api/blogposts"
+      );
       const json = await response.json();
 
       if (response.ok) {

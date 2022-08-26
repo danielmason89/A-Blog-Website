@@ -11,7 +11,7 @@ const BlogDetails = ({ blogpost }) => {
     data: blog,
     error,
     isPending,
-  } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts");
+  } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts/");
 
   const handleClick = async () => {
     const response = await fetch(

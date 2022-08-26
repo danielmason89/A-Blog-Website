@@ -16,11 +16,14 @@ const BlogpostForm = () => {
     const blogpost = { title, body, author };
 
     setIsPending(true);
-    const response = await fetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts", {
-      method: "Post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blogpost),
-    });
+    const response = await fetch(
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
+      {
+        method: "Post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(blogpost),
+      }
+    );
 
     const json = await response.json();
 

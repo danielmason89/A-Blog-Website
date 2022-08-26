@@ -16,7 +16,7 @@ const BlogpostForm = () => {
     const blogpost = { title, body, author };
 
     setIsPending(true);
-    const response = await fetch("http://localhost:4000/api/blogposts", {
+    const response = await fetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts", {
       method: "Post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blogpost),

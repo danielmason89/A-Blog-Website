@@ -11,11 +11,11 @@ const BlogDetails = ({ blogpost }) => {
     data: blog,
     error,
     isPending,
-  } = useFetch("http://localhost:4000/api/blogposts");
+  } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts");
 
   const handleClick = async () => {
     const response = await fetch(
-      "http://localhost:4000/api/blogposts/" + blogpost._id,
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts" + blogpost._id,
       {
         method: "DELETE",
       }

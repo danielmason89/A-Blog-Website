@@ -1,24 +1,31 @@
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Create from "./components/BlogpostForm";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import BlogDetails from "./components/BlogpostDetails";
 import NotFound from "./components/NotFound";
+import { AnimatePresence } from "framer-motion";
+import Modal from "./components/Modal";
+import { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
+  const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
+      <Navbar />
+      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <AnimatePresence mode="wait">
         <div className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
+          <Routes location={location} key={location.key}>
+            <Route path="/" element={<Home setShowModal={setShowModal} />} />
             <Route path="/about" element={<Create />} />
-            <Route path="/blogs/:id" element={<BlogDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </AnimatePresence>
+      <Footer />
     </div>
   );
 }

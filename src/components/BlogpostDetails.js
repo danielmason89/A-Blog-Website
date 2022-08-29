@@ -1,9 +1,13 @@
-// import { useNavigate, useParams } from "react-router-dom";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import useFetch from "../useFetch";
+import { Button, Typography } from "@material-ui/core";
+import RemoveIcon from "@mui/icons-material/Remove";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { motion } from "framer-motion";
 
 // date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import Loader from "../components/Loader";
 
 const BlogDetails = ({ blogpost }) => {
   const { dispatch } = useBlogpostsContext();
@@ -11,11 +15,12 @@ const BlogDetails = ({ blogpost }) => {
     data: blog,
     error,
     isPending,
-  } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts");
+  } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts/");
 
   const handleClick = async () => {
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts" + blogpost._id,
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" +
+        blogpost._id,
       {
         method: "DELETE",
       }
@@ -28,35 +33,56 @@ const BlogDetails = ({ blogpost }) => {
   };
 
   return (
-    <div className="blogpost-details">
-      {isPending && <div>Loading...</div>}
+    <motion.div
+      className="blogpost-details"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+    >
+      {isPending && (
+        <div>
+          <Loader />
+        </div>
+      )}
       {error && <div>{error}</div>}
       {blog && (
         <article>
-          <h3>{blogpost.title}</h3>
-          <p>
+          <Typography variant="h3" align="left">
+            {blogpost.title}
+          </Typography>
+          <Typography variant="subtitle1">
             <strong>Written by {blogpost.author}</strong>
-          </p>
-          <p>
-            <strong>{blogpost.body}</strong>
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="subtitle2">
             {formatDistanceToNow(new Date(blogpost.createdAt), {
               addSuffix: true,
             })}
-          </p>
+          </Typography>
           <span>
-            <button
+            <Button
+              className="seemore-btn"
+              color="secondary"
+              variant="contained"
+              aria-label="see-more"
+            >
+              <MoreHorizIcon fontSize="small" />
+              See More
+            </Button>
+          </span>
+          <span>
+            <Button
+              color="secondary"
+              variant="contained"
               aria-label="delete"
-              className="material-symbols-outlined"
               onClick={handleClick}
             >
+              <RemoveIcon fontSize="small" />
               delete
-            </button>
+            </Button>
           </span>
         </article>
       )}
-    </div>
+    </motion.div>
   );
 };
 

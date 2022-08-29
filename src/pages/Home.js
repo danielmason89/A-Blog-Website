@@ -5,11 +5,12 @@ import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 // components
 import BlogDetails from "../components/BlogpostDetails";
 import BlogpostForm from "../components/BlogpostForm";
+import { Container } from "@material-ui/core";
 
-const Home = () => {
+const Home = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
   const { isPending, error } = useFetch(
-    "https://gentle-plateau-25780.herokuapp.com/api/blogposts"
+    "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
   );
   //   const handleDelete = (id) => {
   //     const newBlogs = blogs.filter((blog) => blog.id !== id);
@@ -19,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     const fetchBlogposts = async () => {
       const response = await fetch(
-        "https://gentle-plateau-25780.herokuapp.com/api/blogposts"
+        "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
       );
       const json = await response.json();
 
@@ -31,24 +32,22 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="home">
-      <div className="blogposts">
+    <Container className="home">
+      <Container className="blogposts">
         {error && <div>{error}</div>}
-        {isPending && <div>Loading...</div>}
+        {isPending && <div>loading...</div>}
         {blogposts &&
           blogposts.map((blogpost) => (
-            <BlogDetails key={blogpost._id} blogpost={blogpost} />
+            <BlogDetails
+              key={blogpost._id}
+              blogpost={blogpost}
+              setShowModal={setShowModal}
+            />
           ))}
-      </div>
+      </Container>
       <BlogpostForm />
-    </div>
+    </Container>
   );
 };
-
-/* <BlogList
-            blogs={blogs}
-            title="All Blogs!"
-            //   handleDelete={handleDelete}
-          /> */
 
 export default Home;

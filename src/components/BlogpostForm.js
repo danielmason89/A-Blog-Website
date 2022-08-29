@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
+import { Button, Typography, TextField } from "@material-ui/core";
+import AddIcon from "@mui/icons-material/Add";
+
+
 // import { useNavigate } from "react-router-dom";
 
 const BlogpostForm = () => {
@@ -17,7 +21,7 @@ const BlogpostForm = () => {
 
     setIsPending(true);
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
       {
         method: "Post",
         headers: { "Content-Type": "application/json" },
@@ -45,34 +49,51 @@ const BlogpostForm = () => {
 
   return (
     <div className="create">
-      <h2>Add a New Blogpost</h2>
-      <form className="" onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          className={emptyFields.includes("title") ? "error" : ""}
-        />
-        <label>Body:</label>
-        <textarea
+      <Typography variant="h5">Add a New Blogpost</Typography>
+      <form onSubmit={handleSubmit}>
+        <div className="textfield-container">
+          <TextField
+            color="secondary"
+            variant="outlined"
+            type="text"
+            value={title}
+            label="Title"
+            onChange={(e) => setTitle(e.target.value)}
+            className={emptyFields.includes("title") ? "error" : ""}
+          />
+          <TextField
+            color="secondary"
+            label="Author"
+            type="text"
+            variant="outlined"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            className={emptyFields.includes("author") ? "error" : ""}
+          />
+        </div>
+        <TextField
+          color="secondary"
           value={body}
+          fullWidth
+          variant="outlined"
+          label="Blogpost"
+          multiline
+          minRows={4}
           onChange={(e) => setBody(e.target.value)}
-          required
           className={emptyFields.includes("body") ? "error" : ""}
-        ></textarea>
-        <label>Author:</label>
-        <input
-          type="text"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          required
-          className={emptyFields.includes("author") ? "error" : ""}
         />
-        {!IsPending && <button>Add Blogpost</button>}
+        {!IsPending && (
+          <Button type="submit" color="secondary" variant="contained">
+            <AddIcon fontSize="small" />
+            Add Blogpost
+          </Button>
+        )}
         {error && <div className="error">{error}</div>}
-        {IsPending && <button disabled>Adding Blogpost...</button>}
+        {IsPending && (
+          <Button color="secondary" variant="outlined" disabled>
+            Adding Blogpost...
+          </Button>
+        )}
       </form>
     </div>
   );

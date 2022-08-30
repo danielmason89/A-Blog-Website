@@ -64,6 +64,9 @@ const Navbar = () => {
           <Typography variant="h1">Developer Blog by Daniel Mason</Typography>
         </Link>
         <Typography variant="subtitle1" className="date">
+          A space for helping others in tech.
+        </Typography>
+        <Typography variant="subtitle1" className="date">
           Today's date is {format(new Date(), "MMMM do Y")}.
         </Typography>
       </motion.div>

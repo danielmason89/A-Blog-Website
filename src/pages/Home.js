@@ -6,6 +6,7 @@ import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import BlogDetails from "../components/BlogpostDetails";
 import BlogpostForm from "../components/BlogpostForm";
 import { Container } from "@material-ui/core";
+import Shimmer from "../components/Shimmer";
 
 const Home = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
@@ -35,7 +36,7 @@ const Home = ({ setShowModal }) => {
     <Container className="home">
       <Container className="blogposts">
         {error && <div>{error}</div>}
-        {isPending && <div>loading...</div>}
+
         {blogposts &&
           blogposts.map((blogpost) => (
             <BlogDetails
@@ -44,6 +45,7 @@ const Home = ({ setShowModal }) => {
               setShowModal={setShowModal}
             />
           ))}
+        {isPending && <Shimmer />}
       </Container>
       <BlogpostForm />
     </Container>

@@ -1,4 +1,6 @@
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Create from "./components/BlogpostForm";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -20,6 +22,8 @@ function App() {
         <div className="content">
           <Routes location={location} key={location.key}>
             <Route path="/" element={<Home setShowModal={setShowModal} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/about" element={<Create />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

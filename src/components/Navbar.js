@@ -61,7 +61,9 @@ const Navbar = () => {
       </motion.div>
       <motion.div variants={leftNavVariants} initial="hidden" animate="visible">
         <Link to="/">
-          <Typography variant="h1">Developer Blog by Daniel Mason</Typography>
+          <Typography variant="h1">
+            A Developer's Blog by Daniel Mason
+          </Typography>
         </Link>
         <Typography variant="subtitle1" className="date">
           A space for helping others in tech.
@@ -77,6 +79,8 @@ const Navbar = () => {
         animate="visible"
       >
         <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
         <Link to="/about">About</Link>
       </motion.div>
     </nav>

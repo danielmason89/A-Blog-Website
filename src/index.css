@@ -345,6 +345,17 @@ input.error {
 }
 
 /* auth forms */
+
+.logout {
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  width: auto;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
 form.signup,
 form.login {
   max-width: 400px;

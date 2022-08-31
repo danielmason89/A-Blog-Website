@@ -1,13 +1,24 @@
 import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
+    await signup(email, password);
+    /* const response = await fetch("http://localhost:5000/api/user/signup", {
+      method: "POST",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const json = await response.json();
+    console.log("json1", json); */
+
+    //console.log("json2", json);
   };
 
   return (
@@ -29,7 +40,8 @@ const Signup = () => {
         }}
         value={password}
       />
-      <button>Sign-Up</button>
+      <button disabled={isLoading}>Sign-Up</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };

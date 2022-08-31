@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import avatar from "../images/profile-image.jpg";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const leftNavVariants = {
   hidden: {
@@ -54,6 +56,12 @@ const imgVariant = {
 };
 
 const Navbar = () => {
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  const handleClick = () => {
+    logout();
+  };
   return (
     <nav className="navbar">
       <motion.div variants={imgVariant} initial="hidden" animate="visible">
@@ -79,9 +87,18 @@ const Navbar = () => {
         animate="visible"
       >
         <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-        <Link to="/about">About</Link>
+        {user && (
+          <div>
+            <span>{user.email}</span>
+            <button onClick={handleClick}>Logout</button>
+          </div>
+        )}
+        {!user && (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+          </>
+        )}
       </motion.div>
     </nav>
   );

@@ -1,27 +1,7 @@
-# Getting Started with Create React App
+# [https://daniel-mason-blog.netlify.app/](https://daniel-mason-blog.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My personal blog. Created from a instance of create-react-app. The theme incoporates some of Material-UI design patterns along with a few of my own.
 
-## Available Scripts
+## Running Locally
 
-In the project directory, you can run:
-
-### `npm start`
-
-### `npm test`
-
-
-
-### `npm run build`
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-## Learn More
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To run locally, fork or clone the repoe, then npm install, run npm run start, and open https://localhost:3000.

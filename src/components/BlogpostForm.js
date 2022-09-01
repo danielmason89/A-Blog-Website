@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import { Button, Typography, TextField } from "@material-ui/core";
 import AddIcon from "@mui/icons-material/Add";
-
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // import { useNavigate } from "react-router-dom";
 
 const BlogpostForm = () => {
   const { dispatch } = useBlogpostsContext();
+  const { user } = useAuthContext();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("");
@@ -17,6 +18,10 @@ const BlogpostForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
     const blogpost = { title, body, author };
 
     setIsPending(true);
@@ -25,6 +30,7 @@ const BlogpostForm = () => {
       {
         method: "Post",
         headers: { "Content-Type": "application/json" },
+        Authorization: `Bearer ${user.token}`,
         body: JSON.stringify(blogpost),
       }
     );

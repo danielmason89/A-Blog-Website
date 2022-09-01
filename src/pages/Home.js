@@ -1,6 +1,7 @@
 import useFetch from "../useFetch";
 import { useEffect } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // components
 import BlogDetails from "../components/BlogpostDetails";
@@ -10,6 +11,7 @@ import Shimmer from "../components/Shimmer";
 
 const Home = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
+  const user = useAuthContext();
   const { isPending, error } = useFetch(
     "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
   );
@@ -21,7 +23,12 @@ const Home = ({ setShowModal }) => {
   useEffect(() => {
     const fetchBlogposts = async () => {
       const response = await fetch(
-        "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
+        "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
       );
       const json = await response.json();
 
@@ -29,8 +36,10 @@ const Home = ({ setShowModal }) => {
         dispatch({ type: "SET_BLOGPOSTS", payload: json });
       }
     };
-    fetchBlogposts();
-  }, [dispatch]);
+    if (user) {
+      fetchBlogposts();
+    }
+  }, [dispatch, user]);
 
   return (
     <Container className="home">

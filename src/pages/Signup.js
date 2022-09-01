@@ -10,15 +10,14 @@ const Signup = () => {
     e.preventDefault();
 
     await signup(email, password);
-    /* const response = await fetch("http://localhost:5000/api/user/signup", {
+    await fetch("https://gentle-plateau-25780.herokuapp.com/api/user/signup", {
       method: "POST",
-      header: { "Content-Type": "application/json" },
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email, password }),
     });
-    const json = await response.json();
-    console.log("json1", json); */
-
-    //console.log("json2", json);
   };
 
   return (

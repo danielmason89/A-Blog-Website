@@ -4,12 +4,14 @@ import { Button, Typography } from "@material-ui/core";
 import RemoveIcon from "@mui/icons-material/Remove";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { motion } from "framer-motion";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // date fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import Loader from "../components/Loader";
 
 const BlogDetails = ({ blogpost }) => {
+  const { user } = useAuthContext();
   const { dispatch } = useBlogpostsContext();
   const {
     data: blog,
@@ -18,11 +20,15 @@ const BlogDetails = ({ blogpost }) => {
   } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts/");
 
   const handleClick = async () => {
+    if (!user) {
+      return;
+    }
     const response = await fetch(
       "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" +
         blogpost._id,
       {
         method: "DELETE",
+        headers: { Authorization: `Bearer ${user.token}` },
       }
     );
     const json = await response.json();

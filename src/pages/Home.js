@@ -11,10 +11,14 @@ import Shimmer from "../components/Shimmer";
 
 const Home = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
-  const user = useAuthContext();
+  const { user } = useAuthContext();
   const { isPending, error } = useFetch(
-    "https://gentle-plateau-25780.herokuapp.com/api/blogposts"
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" : "",
+    {
+      Authorization: `Bearer ${user?.token}`,
+    }
   );
+
   //   const handleDelete = (id) => {
   //     const newBlogs = blogs.filter((blog) => blog.id !== id);
   //     setBlogs(newBlogs);
@@ -23,7 +27,7 @@ const Home = ({ setShowModal }) => {
   useEffect(() => {
     const fetchBlogposts = async () => {
       const response = await fetch(
-        "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
+        "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -37,7 +41,7 @@ const Home = ({ setShowModal }) => {
       }
     };
     if (user) {
-      fetchBlogposts();
+      //fetchBlogposts();
     }
   }, [dispatch, user]);
 
@@ -46,17 +50,17 @@ const Home = ({ setShowModal }) => {
       <Container className="blogposts">
         {error && <div>{error}</div>}
 
-        {blogposts &&
+        {/* {blogposts &&
           blogposts.map((blogpost) => (
             <BlogDetails
               key={blogpost._id}
               blogpost={blogpost}
               setShowModal={setShowModal}
             />
-          ))}
+          ))} */}
         {isPending && <Shimmer />}
       </Container>
-      <BlogpostForm />
+      {/* <BlogpostForm /> */}
     </Container>
   );
 };

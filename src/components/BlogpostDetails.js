@@ -12,12 +12,14 @@ import Loader from "../components/Loader";
 
 const BlogDetails = ({ blogpost }) => {
   const { user } = useAuthContext();
+
+  console.log('user >>>>> <<<<', user)
   const { dispatch } = useBlogpostsContext();
   const {
     data: blog,
     error,
     isPending,
-  } = useFetch("https://gentle-plateau-25780.herokuapp.com/api/blogposts/");
+  } = useFetch(user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" : '', { Authorization: `Bearer ${user?.token}` });
 
   const handleClick = async () => {
     if (!user) {

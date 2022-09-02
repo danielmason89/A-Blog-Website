@@ -18,7 +18,7 @@ const BlogDetails = ({ blogpost }) => {
     error,
     isPending,
   } = useFetch(
-    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" : "",
     { Authorization: `Bearer ${user?.token}` }
   );
 
@@ -27,7 +27,8 @@ const BlogDetails = ({ blogpost }) => {
       return;
     }
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts" + blogpost._id,
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" +
+        blogpost._id,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.token}` },

@@ -14,7 +14,7 @@ const BlogpostForm = () => {
   const [author, setAuthor] = useState("");
   const [IsPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
+  const [emptyFields, setEmptyFields] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

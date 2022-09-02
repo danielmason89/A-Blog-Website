@@ -17,15 +17,17 @@ const BlogDetails = ({ blogpost }) => {
     data: blog,
     error,
     isPending,
-  } = useFetch(user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" : '', { Authorization: `Bearer ${user?.token}` });
+  } = useFetch(
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
+    { Authorization: `Bearer ${user?.token}` }
+  );
 
   const handleClick = async () => {
     if (!user) {
       return;
     }
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" +
-        blogpost._id,
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts" + blogpost._id,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.token}` },

@@ -26,7 +26,7 @@ const BlogpostForm = () => {
 
     setIsPending(true);
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
       {
         method: "Post",
         headers: { "Content-Type": "application/json" },

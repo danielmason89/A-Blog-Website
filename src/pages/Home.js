@@ -13,7 +13,7 @@ const Home = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
   const user = useAuthContext();
   const { isPending, error } = useFetch(
-    "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
+    "https://gentle-plateau-25780.herokuapp.com/api/blogposts"
   );
   //   const handleDelete = (id) => {
   //     const newBlogs = blogs.filter((blog) => blog.id !== id);
@@ -23,7 +23,7 @@ const Home = ({ setShowModal }) => {
   useEffect(() => {
     const fetchBlogposts = async () => {
       const response = await fetch(
-        "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
+        "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

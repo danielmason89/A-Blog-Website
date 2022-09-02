@@ -12,8 +12,6 @@ import Loader from "../components/Loader";
 
 const BlogDetails = ({ blogpost }) => {
   const { user } = useAuthContext();
-
-  console.log('user >>>>> <<<<', user)
   const { dispatch } = useBlogpostsContext();
   const {
     data: blog,

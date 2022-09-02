@@ -8,7 +8,6 @@ const useFetch = (url, headers = {}) => {
   useEffect(() => {
     const abortCont = new AbortController();
     if (url) {
-      console.log(url, headers)
       fetch(url, { headers, signal: abortCont.signal })
         .then((res) => {
           if (!res.ok) {

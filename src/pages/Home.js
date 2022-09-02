@@ -41,7 +41,7 @@ const Home = ({ setShowModal }) => {
       }
     };
     if (user) {
-      //fetchBlogposts();
+      fetchBlogposts();
     }
   }, [dispatch, user]);
 
@@ -50,17 +50,17 @@ const Home = ({ setShowModal }) => {
       <Container className="blogposts">
         {error && <div>{error}</div>}
 
-        {/* {blogposts &&
+        {blogposts &&
           blogposts.map((blogpost) => (
             <BlogDetails
               key={blogpost._id}
               blogpost={blogpost}
               setShowModal={setShowModal}
             />
-          ))} */}
+          ))}
         {isPending && <Shimmer />}
       </Container>
-      {/* <BlogpostForm /> */}
+      <BlogpostForm />
     </Container>
   );
 };

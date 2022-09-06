@@ -49,7 +49,7 @@ const Home = ({ setShowModal }) => {
     <Container className="home">
       <Container className="blogposts">
         {error && <div>{error}</div>}
-
+        {isPending && <Shimmer />}
         {blogposts &&
           blogposts.map((blogpost) => (
             <BlogDetails
@@ -58,7 +58,6 @@ const Home = ({ setShowModal }) => {
               setShowModal={setShowModal}
             />
           ))}
-        {isPending && <Shimmer />}
       </Container>
       <BlogpostForm />
     </Container>

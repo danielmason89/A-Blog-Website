@@ -23,7 +23,7 @@ const Signup = () => {
   return (
     <form className="signup" onSubmit={handleSubmit}>
       <h3>Sign up</h3>
-      <label>Email address:</label>
+      <label>Email:</label>
       <input
         type="email"
         onChange={(e) => {
@@ -39,7 +39,7 @@ const Signup = () => {
         }}
         value={password}
       />
-      <button disabled={isLoading}>Sign-Up</button>
+      <button disabled={isLoading}>Signup</button>
       {error && <div className="error">{error}</div>}
     </form>
   );

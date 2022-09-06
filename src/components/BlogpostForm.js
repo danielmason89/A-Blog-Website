@@ -14,7 +14,7 @@ const BlogpostForm = () => {
   const [author, setAuthor] = useState("");
   const [IsPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState("");
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +26,10 @@ const BlogpostForm = () => {
 
     setIsPending(true);
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        Authorization: `Bearer ${user.token}`,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${user.token}`},
         body: JSON.stringify(blogpost),
       }
     );

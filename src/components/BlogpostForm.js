@@ -29,7 +29,10 @@ const BlogpostForm = () => {
       "https://gentle-plateau-25780.herokuapp.com/api/blogposts/",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${user.token}`},
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
         body: JSON.stringify(blogpost),
       }
     );

@@ -74,10 +74,10 @@ const Navbar = () => {
           </Typography>
         </Link>
         <Typography variant="subtitle1" className="date">
-          A space for helping others in tech.
+          A space for helping others in the tech industry.
         </Typography>
         <Typography variant="subtitle1" className="date">
-          Today's date is {format(new Date(), "MMMM do Y")}.
+          Today's is {format(new Date(), "MMMM do Y")}.
         </Typography>
       </motion.div>
       <motion.div

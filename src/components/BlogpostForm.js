@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
-import { Button, Typography, TextField } from "@material-ui/core";
+import { Button, Typography, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useAuthContext } from "../hooks/useAuthContext";
 

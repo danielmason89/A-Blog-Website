@@ -1,4 +1,4 @@
-import { Avatar, Typography } from "@material-ui/core";
+import { Avatar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import avatar from "../images/profile-image.jpg";
 import { format } from "date-fns";

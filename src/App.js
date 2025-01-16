@@ -10,6 +10,7 @@ import { AnimatePresence } from "framer-motion";
 import Modal from "./components/Modal";
 import { useState } from "react";
 import Footer from "./components/Footer";
+import { BrowserRouter } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {

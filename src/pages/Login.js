@@ -17,6 +17,7 @@ const Login = () => {
       <h3>Login</h3>
       <label>Email:</label>
       <input
+        autoComplete="email"
         type="email"
         onChange={(e) => {
           setEmail(e.target.value);
@@ -26,6 +27,7 @@ const Login = () => {
       <label>Password:</label>
       <input
         type="password"
+        autoComplete="current-password"
         onChange={(e) => {
           setPassword(e.target.value);
         }}

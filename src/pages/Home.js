@@ -6,7 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 // components
 import BlogDetails from "../components/BlogpostDetails";
 import BlogpostForm from "../components/BlogpostForm";
-import { Container } from "@material-ui/core";
+import { Container } from "@mui/material";
 import Shimmer from "../components/Shimmer";
 
 const Home = ({ setShowModal }) => {

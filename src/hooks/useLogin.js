@@ -11,7 +11,7 @@ export const useLogin = () => {
     setError(null);
 
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/user/login",
+      "https://gentle-plateau-25780.herokuapp.com/api",
       {
         method: "POST",
         headers: {

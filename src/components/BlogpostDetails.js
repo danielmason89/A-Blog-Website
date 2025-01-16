@@ -1,13 +1,13 @@
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import useFetch from "../useFetch";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { motion } from "framer-motion";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 // date fns
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { formatDistanceToNow } from "date-fns";
 import Loader from "../components/Loader";
 
 const BlogDetails = ({ blogpost }) => {

@@ -88,23 +88,32 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <motion.div variants={imgVariant} initial="hidden" animate="visible">
-        <Avatar
-          id="avatar"
-          alt="A portrait image of Daniel Mason"
-          src={avatar}
-        />
-      </motion.div>
-      <motion.div variants={leftNavVariants} initial="hidden" animate="visible">
-        <Typography variant="h1">A Developer's Blog</Typography>
+      <div
+        style={{ display: "flex", alignItems: "center", paddingRight: "1rem" }}
+      >
+        <motion.div variants={imgVariant} initial="hidden" animate="visible">
+          <Avatar
+            id="avatar"
+            alt="A portrait image of Daniel Mason"
+            src={avatar}
+          />
+        </motion.div>
+        <motion.div
+          variants={leftNavVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ paddingLeft: "1.25rem" }}
+        >
+          <Typography variant="h1">A Developer's Blog</Typography>
 
-        <Typography variant="subtitle1" className="date">
-          A space for helping others in the tech industry.
-        </Typography>
-        <Typography variant="subtitle1" className="date">
-          {format(new Date(), "MMMM do Y")}
-        </Typography>
-      </motion.div>
+          <Typography variant="subtitle1" className="date">
+            A space for helping others in the tech industry.
+          </Typography>
+          <Typography variant="subtitle1" className="date">
+            {format(new Date(), "MMMM do Y")}
+          </Typography>
+        </motion.div>
+      </div>
       <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
         <motion.div
           className="links"
@@ -130,6 +139,7 @@ const Navbar = () => {
                 onClick={handleClick}
                 color="secondary"
                 variant="outlined"
+                to="/"
               >
                 Logout
               </Button>

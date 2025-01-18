@@ -10,6 +10,7 @@ import Modal from "./components/Modal";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import { useAuthContext } from "./hooks/useAuthContext";
+// import AuthorizedRoute from "./AuthorizedRoute";
 
 function App() {
   const { user } = useAuthContext();

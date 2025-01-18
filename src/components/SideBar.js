@@ -1,8 +1,8 @@
 import { Button, Container, Typography, Box } from "@mui/material";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Link } from "react-router-dom";
 
 const rightNavVariants = {
   hidden: {
@@ -53,7 +53,7 @@ const SideBar = ({ toggleSideBar }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: 2,
+                gap: 1,
                 pl: 0,
                 mt: 1,
               }}
@@ -82,6 +82,7 @@ const SideBar = ({ toggleSideBar }) => {
                 onClick={handleClick}
                 color="secondary"
                 variant="outlined"
+                to="/"
               >
                 Logout
               </Button>
@@ -100,21 +101,35 @@ const SideBar = ({ toggleSideBar }) => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: 2,
+              gap: 1,
             }}
           >
-            <Button
-              to="/login"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Login
-            </Button>
-            <Button
-              to="/signup"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Signup
-            </Button>
+            {!user && (
+              <>
+                <Link
+                  to="/login"
+                  style={{
+                    paddingRight: "1rem",
+                    display: "block",
+                    textAlign: "center",
+                    width: "100%",
+                  }}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  style={{
+                    paddingRight: "1rem",
+                    display: "block",
+                    textAlign: "center",
+                    width: "100%",
+                  }}
+                >
+                  Signup
+                </Link>
+              </>
+            )}
             <Button
               onClick={toggleSideBar}
               color="secondary"

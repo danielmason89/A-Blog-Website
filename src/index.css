@@ -67,12 +67,13 @@ nav li {
 }
 
 .navbar {
-  padding: 20px;
+  padding: 1rem;
   display: flex;
   align-items: center;
   flex-direction: row;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
+  justify-content: space-between;
 }
 .navbar h1 {
   color: #e586a3;

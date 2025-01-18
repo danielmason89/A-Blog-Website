@@ -22,11 +22,7 @@ const BlogDetails = ({ blogpost }) => {
       ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
       : null;
   }, [user]);
-  const {
-    data: blog,
-    error,
-    isPending,
-  } = useFetch(fetchUrl, headers, { Authorization: `Bearer ${user?.token}` });
+  const { data: blog, error, isPending } = useFetch(fetchUrl, headers);
 
   const detailsBlogPost = async () => {
     if (!user) {

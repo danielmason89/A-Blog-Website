@@ -103,18 +103,25 @@ const SideBar = ({ toggleSideBar }) => {
               gap: 2,
             }}
           >
-            <Link
+            <Button
               to="/login"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Login
-            </Link>
-            <Link
+            </Button>
+            <Button
               to="/signup"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Signup
-            </Link>
+            </Button>
+            <Button
+              onClick={toggleSideBar}
+              color="secondary"
+              variant="contained"
+            >
+              Close
+            </Button>
           </Container>
         )}
       </motion.div>

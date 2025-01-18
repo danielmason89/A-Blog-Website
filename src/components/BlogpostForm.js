@@ -57,22 +57,25 @@ const BlogpostForm = () => {
 
   return (
     <div className="create">
-      <Typography variant="h5">Add a New Blogpost</Typography>
+      <Typography variant="h5">Create New Blogpost</Typography>
       <form onSubmit={handleSubmit}>
         <div className="textfield-container">
           <TextField
             color="secondary"
             variant="outlined"
+            fullWidth
+            sx={{ pr: 2 }}
             type="text"
             value={title}
-            label="Title"
+            label="Enter Blog Title"
             onChange={(e) => setTitle(e.target.value)}
             className={emptyFields.includes("title") ? "error" : ""}
           />
           <TextField
             color="secondary"
-            label="Author"
+            label="Enter Author Name"
             type="text"
+            fullWidth
             variant="outlined"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
@@ -84,7 +87,7 @@ const BlogpostForm = () => {
           value={body}
           fullWidth
           variant="outlined"
-          label="Blogpost"
+          label="Write up Blogpost here..."
           multiline
           minRows={4}
           onChange={(e) => setBody(e.target.value)}

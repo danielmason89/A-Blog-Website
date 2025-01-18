@@ -4,19 +4,18 @@ import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import Create from "./components/BlogpostForm";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
-import BlogDetails from "./components/BlogpostDetails";
 import NotFound from "./components/NotFound";
 import { AnimatePresence } from "framer-motion";
 import Modal from "./components/Modal";
 import { useState } from "react";
 import Footer from "./components/Footer";
-import { BrowserRouter } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
   const { user } = useAuthContext();
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="App">
       <Navbar />

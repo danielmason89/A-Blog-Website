@@ -11,6 +11,7 @@
 
 :root {
   --primary: #be6b84;
+  --secondary: #942446;
   --error: #e7195a84;
 }
 
@@ -40,6 +41,7 @@ ul {
   color: whitesmoke;
 }
 
+/* Navigation */
 nav {
   display: flex;
   justify-content: space-between;
@@ -92,6 +94,14 @@ nav p {
 }
 .navbar a:hover {
   color: #f1356d;
+}
+
+.sidebar {
+  width: 20%;
+  min-width: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
@@ -196,7 +206,8 @@ article {
 .textfield-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   margin: 0.75rem 0rem;
   color: whitesmoke;
 }

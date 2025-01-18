@@ -1,10 +1,20 @@
-import { Avatar, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import avatar from "../images/profile-image.jpg";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import SideBar from "./SideBar";
 
 const leftNavVariants = {
   hidden: {
@@ -58,48 +68,111 @@ const imgVariant = {
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const theme = useTheme();
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false);
 
   const handleClick = () => {
     logout();
   };
+
+  function toggleSideBar() {
+    setIsSideBarVisible(!isSideBarVisible);
+  }
+
+  useEffect(() => {
+    if (!isMobileOrTablet && isSideBarVisible) {
+      setIsSideBarVisible(false);
+    }
+  }, [isMobileOrTablet, isSideBarVisible]);
+
   return (
     <nav className="navbar">
       <motion.div variants={imgVariant} initial="hidden" animate="visible">
-        <Avatar id="avatar" alt="Daniel Mason" src={avatar} />
+        <Avatar
+          id="avatar"
+          alt="A portrait image of Daniel Mason"
+          src={avatar}
+        />
       </motion.div>
       <motion.div variants={leftNavVariants} initial="hidden" animate="visible">
-        <Link to="/">
-          <Typography variant="h1">
-            A Developer's Blog by Daniel Mason
-          </Typography>
-        </Link>
+        <Typography variant="h1">A Developer's Blog</Typography>
+
         <Typography variant="subtitle1" className="date">
           A space for helping others in the tech industry.
         </Typography>
         <Typography variant="subtitle1" className="date">
-          Today's is {format(new Date(), "MMMM do Y")}.
+          {format(new Date(), "MMMM do Y")}
         </Typography>
       </motion.div>
-      <motion.div
-        className="links"
-        variants={rightNavVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <Link to="/">Home</Link>
-        {user && (
-          <div>
-            <span>{user.email}</span>
-            <button onClick={handleClick}>Logout</button>
+      <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+        <motion.div
+          className="links"
+          variants={rightNavVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {user && (
+            <Container>
+              <span
+                style={{
+                  fontWeight: "600",
+                  color: "white",
+                  opacity: "0.8",
+                }}
+              >
+                {user.email}
+              </span>
+              <Link to="/" style={{ paddingRight: "1.25rem" }}>
+                Home
+              </Link>
+              <Button
+                onClick={handleClick}
+                color="secondary"
+                variant="outlined"
+              >
+                Logout
+              </Button>
+            </Container>
+          )}
+          {!user && (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
+            </>
+          )}
+        </motion.div>
+      </Box>
+      {isMobileOrTablet && !isSideBarVisible && (
+        <Button
+          color="secondary"
+          variant="contained"
+          onClick={toggleSideBar}
+          sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+        >
+          <div
+            style={{
+              height: "1.5rem",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+            }}
+          >
+            <div
+              style={{ backgroundColor: "black", width: 35, height: 3 }}
+            ></div>
+            <div
+              style={{ backgroundColor: "black", width: 35, height: 3 }}
+            ></div>
+            <div
+              style={{ backgroundColor: "black", width: 35, height: 3 }}
+            ></div>
           </div>
-        )}
-        {!user && (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        )}
-      </motion.div>
+        </Button>
+      )}
+      {isMobileOrTablet && isSideBarVisible && (
+        <SideBar toggleSideBar={toggleSideBar} />
+      )}
     </nav>
   );
 };

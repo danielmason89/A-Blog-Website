@@ -1,4 +1,5 @@
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
+import { useMemo } from "react";
 import useFetch from "../useFetch";
 import { Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -13,16 +14,40 @@ import Loader from "../components/Loader";
 const BlogDetails = ({ blogpost }) => {
   const { user } = useAuthContext();
   const { dispatch } = useBlogpostsContext();
+  const headers = useMemo(() => {
+    return { Authorization: `Bearer ${user?.token}` };
+  }, [user?.token]);
+  const fetchUrl = useMemo(() => {
+    return user
+      ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
+      : null;
+  }, [user]);
   const {
     data: blog,
     error,
     isPending,
-  } = useFetch(
-    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" : "",
-    { Authorization: `Bearer ${user?.token}` }
-  );
+  } = useFetch(fetchUrl, headers, { Authorization: `Bearer ${user?.token}` });
 
-  const handleClick = async () => {
+  const detailsBlogPost = async () => {
+    if (!user) {
+      return;
+    }
+    const response = await fetch(
+      "https://gentle-plateau-25780.herokuapp.com/api/blogposts/" +
+        blogpost._id,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
+    const json = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: "SET_BLOGPOST", payload: json });
+    }
+  };
+
+  const deleteBlogPost = async () => {
     if (!user) {
       return;
     }
@@ -73,6 +98,7 @@ const BlogDetails = ({ blogpost }) => {
               color="secondary"
               variant="contained"
               aria-label="see-more"
+              onClick={detailsBlogPost}
             >
               <MoreHorizIcon fontSize="small" />
               See More
@@ -83,7 +109,7 @@ const BlogDetails = ({ blogpost }) => {
               color="secondary"
               variant="contained"
               aria-label="delete"
-              onClick={handleClick}
+              onClick={deleteBlogPost}
             >
               <RemoveIcon fontSize="small" />
               delete

@@ -15,13 +15,9 @@ const BlogDetails = ({ blogpost }) => {
   const { user } = useAuthContext();
   const { dispatch } = useBlogpostsContext();
   const headers = useMemo(() => {
-    return { Authorization: `Bearer ${user?.token}` };
+    return user?.token ? { Authorization: `Bearer ${user.token}` } : {};
   }, [user?.token]);
-  const fetchUrl = useMemo(() => {
-    return user
-      ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts/"
-      : null;
-  }, [user]);
+  const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogposts/";
   const { data: blog, error, isPending } = useFetch(fetchUrl, headers);
 
   const detailsBlogPost = async () => {

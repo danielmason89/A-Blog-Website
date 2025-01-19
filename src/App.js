@@ -2,7 +2,6 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
-import Create from "./components/BlogpostForm";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import { AnimatePresence } from "framer-motion";
@@ -11,7 +10,6 @@ import { useState } from "react";
 import Footer from "./components/Footer";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Home from "./pages/Home";
-// import AuthorizedRoute from "./AuthorizedRoute";
 
 function App() {
   const { user } = useAuthContext();
@@ -44,7 +42,6 @@ function App() {
               element={!user ? <Signup /> : <Navigate to="/dashboard" />}
             />
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<Create />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

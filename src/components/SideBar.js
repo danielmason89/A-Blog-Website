@@ -67,17 +67,17 @@ const SideBar = ({ toggleSideBar }) => {
               >
                 {user.email}
               </Typography>
-              <Button
-                to="/"
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
+              <Link
+                to="/dashboard"
+                style={{
+                  paddingRight: "1rem",
+                  display: "block",
+                  textAlign: "center",
+                  width: "100%",
                 }}
-                color="secondary"
               >
-                Home
-              </Button>
+                Dashboard
+              </Link>
               <Button
                 onClick={handleClick}
                 color="secondary"
@@ -127,6 +127,17 @@ const SideBar = ({ toggleSideBar }) => {
                   }}
                 >
                   Signup
+                </Link>
+                <Link
+                  to="/"
+                  style={{
+                    paddingRight: "1rem",
+                    display: "block",
+                    textAlign: "center",
+                    width: "100%",
+                  }}
+                >
+                  Home
                 </Link>
               </>
             )}

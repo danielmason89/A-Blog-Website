@@ -1,5 +1,5 @@
 import useFetch from "../useFetch";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -9,29 +9,41 @@ import BlogpostForm from "../components/BlogpostForm";
 import { Container } from "@mui/material";
 import Shimmer from "../components/Shimmer";
 
-const Home = ({ setShowModal }) => {
+const Dashboard = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
   const { user } = useAuthContext();
-
-  // Always use the public URL. If your API supports public reads,
-  // you might not even need an Authorization header.
-  const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogposts";
-
-  // Only include the Authorization header if a user is logged in
-  const headers = useMemo(
-    () => (user ? { Authorization: `Bearer ${user.token}` } : {}),
-    [user]
+  const { isPending, error } = useFetch(
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
+    {
+      Authorization: `Bearer ${user?.token}`,
+    }
   );
 
-  // Call useFetch regardless of whether the user is logged in
-  const { isPending, error, data } = useFetch(fetchUrl, headers);
+  //   const handleDelete = (id) => {
+  //     const newBlogs = blogs.filter((blog) => blog.id !== id);
+  //     setBlogs(newBlogs);
+  //   };
 
-  // Update the global context when the data changes
   useEffect(() => {
-    if (data) {
-      dispatch({ type: "SET_BLOGPOSTS", payload: data });
+    const fetchBlogposts = async () => {
+      const response = await fetch(
+        "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      const json = await response.json();
+
+      if (response.ok) {
+        dispatch({ type: "SET_BLOGPOSTS", payload: json });
+      }
+    };
+    if (user) {
+      fetchBlogposts();
     }
-  }, [data, dispatch]);
+  }, [dispatch, user]);
 
   return (
     <Container className="home">
@@ -47,8 +59,9 @@ const Home = ({ setShowModal }) => {
             />
           ))}
       </Container>
+      <BlogpostForm />
     </Container>
   );
 };
 
-export default Home;
+export default Dashboard;

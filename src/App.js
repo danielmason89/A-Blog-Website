@@ -1,4 +1,4 @@
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
@@ -10,6 +10,7 @@ import Modal from "./components/Modal";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Home from "./pages/Home";
 // import AuthorizedRoute from "./AuthorizedRoute";
 
 function App() {
@@ -25,10 +26,10 @@ function App() {
         <div className="content">
           <Routes location={location} key={location.key}>
             <Route
-              path="/"
+              path="/dashboard"
               element={
                 user ? (
-                  <Home setShowModal={setShowModal} />
+                  <Dashboard setShowModal={setShowModal} />
                 ) : (
                   <Navigate to="/login" />
                 )
@@ -36,12 +37,13 @@ function App() {
             />
             <Route
               path="/login"
-              element={!user ? <Login /> : <Navigate to="/" />}
+              element={!user ? <Login /> : <Navigate to="/dashboard" />}
             />
             <Route
               path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/" />}
+              element={!user ? <Signup /> : <Navigate to="/dashboard" />}
             />
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<Create />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

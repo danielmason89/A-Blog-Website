@@ -132,8 +132,8 @@ const Navbar = () => {
               >
                 {user.email}
               </span>
-              <Link to="/" style={{ paddingRight: "1.25rem" }}>
-                Home
+              <Link to="/dashboard" style={{ paddingRight: "1.25rem" }}>
+                Dashboard
               </Link>
               <Button
                 onClick={handleClick}
@@ -149,6 +149,7 @@ const Navbar = () => {
             <>
               <Link to="/login">Login</Link>
               <Link to="/signup">Signup</Link>
+              <Link to="/">Home</Link>
             </>
           )}
         </motion.div>

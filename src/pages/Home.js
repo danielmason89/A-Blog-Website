@@ -14,7 +14,6 @@ const Home = ({ setShowModal }) => {
 
   const { isPending, error, data } = useFetch(fetchUrl);
 
-  // Update the global context when the data changes
   useEffect(() => {
     if (data) {
       dispatch({ type: "GET_BLOGPOSTS", payload: data });

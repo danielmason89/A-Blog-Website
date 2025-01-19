@@ -96,17 +96,19 @@ const BlogDetails = ({ blogpost }) => {
               See More
             </Button>
           </span>
-          <span>
-            <Button
-              color="secondary"
-              variant="contained"
-              aria-label="delete"
-              onClick={deleteBlogPost}
-            >
-              <RemoveIcon fontSize="small" />
-              delete
-            </Button>
-          </span>
+          {user && (
+            <span>
+              <Button
+                color="secondary"
+                variant="contained"
+                aria-label="delete"
+                onClick={deleteBlogPost}
+              >
+                <RemoveIcon fontSize="small" />
+                Delete
+              </Button>
+            </span>
+          )}
         </article>
       )}
     </motion.div>

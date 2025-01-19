@@ -8,6 +8,11 @@ export const blogpostsReducer = (state, action) => {
       return {
         blogposts: action.payload,
       };
+    case "GET_BLOGPOSTS":
+      return {
+        ...state,
+        blogposts: action.payload,
+      };
     case "CREATE_BLOGPOST":
       return {
         blogposts: [action.payload, ...state.blogposts],

@@ -125,6 +125,20 @@ article {
   height: 6rem;
 }
 
+/* hero section styles */
+.main-container {
+  height: 50lvh;
+  padding-top: 2rem;
+}
+
+.second-first-item {
+  background-color: green;
+}
+
+.second-second-item {
+  background-color: orange;
+}
+
 /* blog previews / list */
 .blogpost-preview {
   padding: 10px 16px;

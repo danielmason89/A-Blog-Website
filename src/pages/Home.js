@@ -6,6 +6,7 @@ import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import BlogDetails from "../components/BlogpostDetails";
 import { Container } from "@mui/material";
 import Shimmer from "../components/Shimmer";
+import HeroSection from "../components/HeroSection";
 
 const Home = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();
@@ -22,6 +23,9 @@ const Home = ({ setShowModal }) => {
 
   return (
     <Container className="home">
+      <Container>
+        <HeroSection />
+      </Container>
       <Container className="blogposts">
         {error && <div>{error}</div>}
         {isPending && <Shimmer />}

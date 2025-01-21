@@ -1,8 +1,9 @@
+import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const BlogList = ({ blogs, title }) => {
   return (
-    <div className="blog-list">
+    <Grid item sm={4} xs={4} lg={12} className="blog-list">
       <h2>{title}</h2>
       {blogs.map((blog) => (
         <div className="blog-preview" key={blog.id}>
@@ -10,10 +11,9 @@ const BlogList = ({ blogs, title }) => {
             <h2>{blog.title}</h2>
             <p>{blog.author}</p>
           </Link>
-          {/* <button onClick={() => handleDelete(blog.id)}>delete blog</button> */}
         </div>
       ))}
-    </div>
+    </Grid>
   );
 };
 

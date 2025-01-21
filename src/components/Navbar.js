@@ -148,7 +148,7 @@ const Navbar = () => {
           {!user && (
             <>
               <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <Link to="/subscribe">Subscribe</Link>
               <Link to="/">Home</Link>
             </>
           )}

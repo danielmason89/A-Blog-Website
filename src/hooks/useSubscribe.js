@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
-export const useSignup = () => {
+export const useSubscribe = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const subscribe = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
     const response = await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/user/signup",
+      "https://gentle-plateau-25780.herokuapp.com/api/user/subscribe",
       {
         method: "POST",
         headers: {
@@ -35,5 +35,5 @@ export const useSignup = () => {
       setIsLoading(false);
     }
   };
-  return { signup, isLoading, error };
+  return { subscribe, isLoading, error };
 };

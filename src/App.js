@@ -1,6 +1,6 @@
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Subscribe from "./pages/Subscribe";
 import Navbar from "./components/Navbar";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import NotFound from "./components/NotFound";
@@ -38,8 +38,8 @@ function App() {
               element={!user ? <Login /> : <Navigate to="/dashboard" />}
             />
             <Route
-              path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/dashboard" />}
+              path="/subscribe"
+              element={!user ? <Subscribe /> : <Navigate to="/dashboard" />}
             />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />

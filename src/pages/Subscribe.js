@@ -1,28 +1,32 @@
 import { useState } from "react";
-import { useSignup } from "../hooks/useSignup";
+import { useSubscribe } from "../hooks/useSubscribe";
 
-const Signup = () => {
+const Subscribe = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, error, isLoading } = useSignup();
+  const { subscribe, error, isLoading } = useSubscribe();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await signup(email, password);
-    await fetch("https://gentle-plateau-25780.herokuapp.com/api/user/signup", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    await subscribe(email, password);
+
+    await fetch(
+      "https://gentle-plateau-25780.herokuapp.com/api/user/subscribe",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
   };
 
   return (
     <form className="signup" onSubmit={handleSubmit}>
-      <h3>Sign up</h3>
+      <h3>Subscribe</h3>
       <label>Email:</label>
       <input
         type="email"
@@ -41,10 +45,10 @@ const Signup = () => {
         }}
         value={password}
       />
-      <button disabled={isLoading}>Signup</button>
+      <button disabled={isLoading}>Subscribe</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
 };
 
-export default Signup;
+export default Subscribe;

@@ -118,7 +118,7 @@ const SideBar = ({ toggleSideBar }) => {
                   Login
                 </Link>
                 <Link
-                  to="/signup"
+                  to="/subscribe"
                   style={{
                     paddingRight: "1rem",
                     display: "block",
@@ -126,7 +126,7 @@ const SideBar = ({ toggleSideBar }) => {
                     width: "100%",
                   }}
                 >
-                  Signup
+                  Subscribe
                 </Link>
                 <Link
                   to="/"

@@ -1,6 +1,10 @@
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 
 export default function MainGridItem() {
+  const subscribeUser = () => {
+    console.log("test");
+  };
+
   return (
     <Grid container className="main-container">
       <Grid
@@ -13,16 +17,27 @@ export default function MainGridItem() {
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          alignItems: "flex-end",
+          alignItems: "flex-start",
         }}
       >
-        <Typography component="h2" variant="h3">
+        <Typography component="h2" variant="h3" color="#f1356d">
           Enjoy this helpful blog, while drinking your fav beverage...
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" color="black">
           We mainly write about tech, career, development, and learning.
           Subscribe to stay in the loop.
         </Typography>
+        <Button
+          variant="contained"
+          color="secondary"
+          aria-label="subscribe"
+          sx={{
+            marginTop: "1rem",
+          }}
+          onClick={subscribeUser}
+        >
+          Subscribe
+        </Button>
       </Grid>
     </Grid>
   );

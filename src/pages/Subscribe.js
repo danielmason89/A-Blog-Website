@@ -9,19 +9,16 @@ const Subscribe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await subscribe(email, password);
+    if (!email || !password) {
+      alert("Email and password are required.");
+      return;
+    }
 
-    await fetch(
-      "https://gentle-plateau-25780.herokuapp.com/api/user/subscribe",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    try {
+      await subscribe(email, password);
+    } catch (err) {
+      console.error("Subscription failed:", err);
+    }
   };
 
   return (
@@ -45,7 +42,9 @@ const Subscribe = () => {
         }}
         value={password}
       />
-      <button disabled={isLoading}>Subscribe</button>
+      <button disabled={isLoading}>
+        {isLoading ? "Loading..." : "Subscribe"}
+      </button>
       {error && <div className="error">{error}</div>}
     </form>
   );

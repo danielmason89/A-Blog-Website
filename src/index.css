@@ -129,10 +129,21 @@ article {
 .main-container {
   height: 50lvh;
   padding-top: 2rem;
+  width: 50lvw;
+  background-image: url("./images/pexels-ivan-samkov-4240497.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  border-radius: 1%;
 }
 
-.second-first-item {
-  background-color: green;
+.card-header {
+  color: #3333;
+}
+
+.contributor-image {
+  height: 50lvh;
+  object-fit: fill;
 }
 
 .second-second-item {
@@ -292,8 +303,18 @@ input.error {
   display: flex;
   align-items: center;
   height: 5vh;
+  border-top: 1px solid #f2f2f2;
   padding-bottom: 3rem;
   color: whitesmoke;
+  padding: 2rem;
+}
+
+footer a {
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #ff62ab;
 }
 
 .loader {
@@ -389,4 +410,9 @@ form.login {
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
 }

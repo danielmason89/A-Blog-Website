@@ -106,7 +106,7 @@ const Navbar = () => {
         >
           <Typography variant="h1">A Developer's Blog</Typography>
 
-          <Typography variant="subtitle1" className="date">
+          <Typography variant="h6" className="date">
             A space for helping others in the tech industry.
           </Typography>
           <Typography variant="subtitle1" className="date">
@@ -158,6 +158,7 @@ const Navbar = () => {
         <Button
           color="secondary"
           variant="contained"
+          aria-label="Sidebar button"
           onClick={toggleSideBar}
           sx={{ display: { xs: "block", sm: "block", md: "none" } }}
         >

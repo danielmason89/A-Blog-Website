@@ -20,7 +20,18 @@ export default function MainGridItem() {
           alignItems: "flex-start",
         }}
       >
-        <Typography component="h2" variant="h3" color="#f1356d">
+        <Typography
+          component="h2"
+          variant="h3"
+          color="#f1356d"
+          sx={{
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            // color: "#ffffff",
+            padding: "8px 16px",
+            borderRadius: "2%",
+            display: "inline-block",
+          }}
+        >
           Enjoy this helpful blog, while drinking your fav beverage...
         </Typography>
         <Typography variant="body1" color="black">

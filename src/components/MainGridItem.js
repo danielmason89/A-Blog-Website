@@ -23,7 +23,6 @@ export default function MainGridItem() {
         <Typography
           component="h2"
           variant="h3"
-          color="#f1356d"
           sx={{
             backgroundColor: "rgba(0, 0, 0, 0.2)",
             color: "#ffffff",

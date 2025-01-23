@@ -25,7 +25,7 @@ export default function GridItem(props) {
         alt="a picture of each the author of Dev Blog"
       />
       <CardContent>
-        <Typography variant="h6" component="span">
+        <Typography variant="h5" component="span" sx={{ color: "black" }}>
           {props.author}
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">

@@ -25,8 +25,8 @@ export default function MainGridItem() {
           variant="h3"
           color="#f1356d"
           sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
-            // color: "#ffffff",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            color: "#ffffff",
             padding: "8px 16px",
             borderRadius: "2%",
             display: "inline-block",

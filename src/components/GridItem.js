@@ -22,6 +22,7 @@ export default function GridItem(props) {
         className="contributor-image"
         component="img"
         image={props.image}
+        alt="a picture of each the author of Dev Blog"
       />
       <CardContent>
         <Typography variant="h6" component="span">

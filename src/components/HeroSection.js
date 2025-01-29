@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import MainGridItem from "./MainGridItem";
 import GridItem from "./GridItem";
 import profileImage from "../images/IMG_8958.jpg";
-import profileImage2 from "../images/pexels-oktay-koseoglu-42034955-30333762.jpg";
+import profileImage2 from "../images/HeroChrisDiaz.png";
 
 export default function HeroSection() {
   const authors = [

@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import MainGridItem from "./MainGridItem";
 import GridItem from "./GridItem";
 import profileImage from "../images/IMG_8958.jpg";
-import profileImage2 from "../images/HeroChrisDiaz.png";
+import profileImage2 from "../images/IMG_3253.webp";
 
 export default function HeroSection() {
   const authors = [

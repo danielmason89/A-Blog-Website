@@ -5,4 +5,4 @@
 
 ## Running Locally
 
-### To run locally, fork or clone the repoe, then npm install, run npm run start, and open https://localhost:3000.
+### To run locally, fork or clone the repo then npm install, run npm run start, and open https://localhost:3000.

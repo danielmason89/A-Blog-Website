@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: danielmason89/hello-barsoom@0.0.3
+        uses: danielmason89/hello-barsoom@0.0.4
         with:
           name: 'Mason'
       # Use the output from the `hello` step

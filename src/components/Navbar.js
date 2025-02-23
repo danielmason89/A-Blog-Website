@@ -18,7 +18,7 @@ import SideBar from "./SideBar";
 
 const leftNavVariants = {
   hidden: {
-    x: -550,
+    x: -550, 
     opacity: 0,
   },
   visible: {

@@ -9,12 +9,12 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import avatar from "../images/profile-image.jpg";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import SideBar from "./SideBar";
+import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
 
 const leftNavVariants = {
   hidden: {
@@ -94,9 +94,8 @@ const Navbar = () => {
         <motion.div variants={imgVariant} initial="hidden" animate="visible">
           <Avatar
             id="avatar"
-            alt="A portrait image of Daniel Mason"
-            src={avatar}
-          />
+            alt="Logo of Coffee Cup"
+          ><EmojiFoodBeverageIcon fontSize="large"/></Avatar>
         </motion.div>
         <motion.div
           variants={leftNavVariants}

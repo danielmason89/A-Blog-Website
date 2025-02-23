@@ -1,13 +1,13 @@
 import { Grid, Typography } from "@mui/material";
 import MainGridItem from "./MainGridItem";
 import GridItem from "./GridItem";
-import profileImage from "../images/IMG_8958.jpg";
-import profileImage2 from "../images/IMG_3253.webp";
+import profileImage from "../images/HeroDanielMason.webp";
+import profileImage2 from "../images/HeroChrisDiaz.webp";
 
 export default function HeroSection() {
   const authors = [
     { name: "Daniel Mason", occupation: "Full Stack Software Developer" },
-    { name: "Chris Diaz", occupation: "Frontend Engineer" },
+    { name: "Chris Diaz", occupation: "Tech Enthusiast" },
   ];
 
   return (

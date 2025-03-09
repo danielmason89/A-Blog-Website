@@ -1,0 +1,21 @@
+\newcommand{\dttitle}{}
+\newcommand{\dtauthor}{the author}
+\newcommand{\dtsubject}{the matter}
+\newcommand{\dtkeywords}{this, that}
+\documentclass{photobook} % use [draftmode] for preview
+\color{white}
+\pagecolor{black}
+\begin{document}
+\maketitle
+\pagestyle{empty}
+\begin{minipage}{\imgwidth}%
+\drawtrimcorners%
+\vskip0pt plus 1filll
+\begin{minipage}{\imgwidth}%
+ \hfil\includegraphics[width=\imgwidth,height=\imgheight,keepaspectratio]{profile-image.webp}\hfil
+  % put text under image here
+\end{minipage}
+\end{minipage}
+\newpage
+
+\end{document}% created with darktable 5.0.0

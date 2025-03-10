@@ -5,7 +5,7 @@ const backdropVariants = {
   hidden: { opacity: 0 },
 };
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal }) => {
   return (
     <AnimatePresence mode="wait">
       {showModal && (

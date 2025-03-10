@@ -9,7 +9,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // date fns
 import { formatDistanceToNow } from "date-fns";
-import Loader from "../components/Loader";
+import Loader from "./Loader";
 
 const BlogDetails = ({ blogpost }) => {
   const { user } = useAuthContext();

@@ -25,7 +25,7 @@ export default function HeroSection() {
         />
       </Grid>
       <Grid item md={6} sm={12} xs={12}>
-        <Typography className="second-second-item">
+        <Typography className="second-second-item" variant="body1" component="div">
           <GridItem
             title="Our Mission."
             subheader="Empowering developers with accessible, practical, and inspiring ideas and resources."

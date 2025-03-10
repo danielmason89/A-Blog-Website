@@ -92,10 +92,12 @@ const Navbar = () => {
         style={{ display: "flex", alignItems: "center", paddingRight: "1rem" }}
       >
         <motion.div variants={imgVariant} initial="hidden" animate="visible">
+        <Link to="/">
           <Avatar
             id="avatar"
             alt="Logo of Coffee Cup"
           ><EmojiFoodBeverageIcon fontSize="large"/></Avatar>
+        </Link>
         </motion.div>
         <motion.div
           variants={leftNavVariants}

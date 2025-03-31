@@ -20,7 +20,7 @@
     "vite": "^6.2.3",
     "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "vite",

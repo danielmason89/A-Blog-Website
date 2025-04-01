@@ -14,7 +14,7 @@
     "@vitejs/plugin-react-swc": "^3.8.0",
     "date-fns": "^2.29.2",
     "framer-motion": "^7.2.1",
-    "react": "^18.2.0",
+    "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^6.29.0",
     "vite": "^6.2.3",

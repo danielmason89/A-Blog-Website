@@ -116,8 +116,6 @@ nav p {
 
 /* homepage */
 .home {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
 
@@ -142,7 +140,7 @@ article {
 }
 
 .contributor-image {
-  height: 50lvh;
+  height: 90lvh;
   object-fit: fill;
 }
 
@@ -415,4 +413,8 @@ form.login {
 .error {
   color: red;
   margin-top: 10px;
+}
+
+.css-11lq3yg-MuiGrid-root {
+  flex-direction: column-reverse;
 }

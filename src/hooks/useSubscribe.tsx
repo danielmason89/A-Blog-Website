@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useAuthContext } from "./useAuthContext";
+import { useAuthContext } from "./useAuthContext.tsx";
 
 export const useSubscribe = () => {
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { dispatch } = useAuthContext();
 
-  const subscribe = async (email, password) => {
+  const subscribe = async (email: string, password: string) => {
     setIsLoading(true);
     setError(null);
 
@@ -38,7 +38,11 @@ export const useSubscribe = () => {
         setIsLoading(false);
       }
     } catch (err) {
-      setError(err.message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected issue occurred, try refreshing the page.");
+      }
       setIsLoading(false);
     }
   };

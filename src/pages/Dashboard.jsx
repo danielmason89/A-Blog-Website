@@ -1,13 +1,13 @@
 import useFetch from "../useFetch";
 import { useEffect } from "react";
-import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useBlogpostsContext } from "../hooks/useBlogpostsContext.tsx";
+import { useAuthContext } from "../hooks/useAuthContext.tsx";
 
 // components
 import BlogDetails from "../components/BlogpostDetails";
 import BlogpostForm from "../components/BlogpostForm";
 import { Container } from "@mui/material";
-import Shimmer from "../components/Shimmer";
+import Shimmer from "../components/Shimmer.tsx";
 
 const Dashboard = ({ setShowModal }) => {
   const { blogposts, dispatch } = useBlogpostsContext();

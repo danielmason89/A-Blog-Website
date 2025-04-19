@@ -1,4 +1,4 @@
-import { BlogpostsContext } from "../context/BlogpostContext";
+import { BlogpostsContext } from "../context/BlogpostContext.tsx";
 import { useContext } from "react";
 
 export const useBlogpostsContext = () => {

@@ -1,0 +1,1 @@
+{"root":["./src/vite-env.d.ts","./src/context/authcontext.tsx","./src/context/blogpostcontext.tsx","./src/hooks/useauthcontext.tsx","./src/hooks/useblogpostscontext.tsx","./src/hooks/uselogin.tsx","./src/hooks/uselogout.tsx","./src/hooks/usesubscribe.tsx"],"version":"5.8.3"}

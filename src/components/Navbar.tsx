@@ -11,9 +11,9 @@ import {
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
-import { useLogout } from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
-import SideBar from "./SideBar";
+import { useLogout } from "../hooks/useLogout.tsx";
+import { useAuthContext } from "../hooks/useAuthContext.tsx";
+import SideBar from "./SideBar.tsx";
 import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
 
 const leftNavVariants = {
@@ -111,7 +111,7 @@ const Navbar = () => {
             A space for helping others in the tech industry.
           </Typography>
           <Typography variant="subtitle1" className="date">
-            {format(new Date(), "MMMM do Y")}
+            {format(new Date(), "MMMM do y")}
           </Typography>
         </motion.div>
       </div>
@@ -141,6 +141,7 @@ const Navbar = () => {
                 color="secondary"
                 variant="outlined"
                 to="/"
+                component={Link}
               >
                 Logout
               </Button>
@@ -150,7 +151,6 @@ const Navbar = () => {
             <>
               <Link to="/login">Login</Link>
               <Link to="/subscribe">Subscribe</Link>
-              <Link to="/">Home</Link>
             </>
           )}
         </motion.div>

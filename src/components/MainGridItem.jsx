@@ -21,8 +21,8 @@ export default function MainGridItem() {
         }}
       >
         <Typography
-          component="h2"
-          variant="h3"
+          component="h3"
+          variant="h4"
           sx={{
             backgroundColor: "rgba(0, 0, 0, 0.2)",
             color: "#ffffff",

@@ -27,7 +27,7 @@ const Footer = () => {
         >
           <Link
             to="/"
-            sx={{ textDecoration: "none", color: "white", fontWeight: "600" }}
+            style={{ textDecoration: "none", color: "white", fontWeight: "600" }}
           >
             Dev Blog
           </Link>

@@ -1,4 +1,4 @@
-import { useAuthContext } from "./useAuthContext";
+import { useAuthContext } from "./useAuthContext.tsx";
 
 export const useLogout = () => {
   const { dispatch } = useAuthContext();

@@ -1,7 +1,18 @@
 import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const BlogList = ({ blogs, title }) => {
+interface Blog {
+  id: string,
+  title: string;
+  author: string;
+}
+
+interface BlogListProps {
+  blogs: Blog[];
+  title: string;
+}
+
+const BlogList = ({ blogs, title }: BlogListProps) => {
   return (
     <Grid item sm={4} xs={4} lg={12} className="blog-list">
       <h2>{title}</h2>

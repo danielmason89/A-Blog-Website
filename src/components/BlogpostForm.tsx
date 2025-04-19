@@ -9,14 +9,14 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const BlogpostForm = () => {
   const { dispatch } = useBlogpostsContext();
   const { user } = useAuthContext();
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [author, setAuthor] = useState("");
-  const [IsPending, setIsPending] = useState(false);
-  const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
+  const [title, setTitle] = useState<string>("");
+  const [body, setBody] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
+  const [IsPending, setIsPending] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [emptyFields, setEmptyFields] = useState<string[]>([]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!user) {
       setError("You must be logged in");

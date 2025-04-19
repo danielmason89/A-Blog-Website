@@ -4,6 +4,10 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link } from "react-router-dom";
 
+interface SideBarProps {
+  toggleSideBar: () => void;
+}
+
 const rightNavVariants = {
   hidden: {
     x: 550,
@@ -23,7 +27,7 @@ const rightNavVariants = {
   },
 };
 
-const SideBar = ({ toggleSideBar }) => {
+const SideBar = ({ toggleSideBar }: SideBarProps) => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
 
@@ -83,6 +87,7 @@ const SideBar = ({ toggleSideBar }) => {
                 color="secondary"
                 variant="outlined"
                 to="/"
+                component={Link}
               >
                 Logout
               </Button>

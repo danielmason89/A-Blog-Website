@@ -1,6 +1,6 @@
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 import { useMemo } from "react";
-import useFetch from "../useFetch";
+import useFetch from "../useFetch.ts";
 import { Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -11,7 +11,19 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { formatDistanceToNow } from "date-fns";
 import Loader from "./Loader";
 
-const BlogDetails = ({ blogpost }) => {
+interface BlogPost {
+  _id: string;
+  title: string;
+  author: string;
+  content: string;
+  createdAt: string
+}
+
+interface BlogPostProps {
+  blogpost: BlogPost
+}
+
+const BlogDetails = ({ blogpost }: BlogPostProps ) => {
   const { user } = useAuthContext();
   const { dispatch } = useBlogpostsContext();
   const headers = useMemo(() => {
@@ -35,7 +47,7 @@ const BlogDetails = ({ blogpost }) => {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "SET_BLOGPOST", payload: json });
+      dispatch({ type: "SET_BLOGPOSTS", payload: json });
     }
   };
 

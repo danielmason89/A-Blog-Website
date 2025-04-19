@@ -1,11 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 
+interface ModalProps {
+  showModal: boolean;
+}
+
 const backdropVariants = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
 
-const Modal = ({ showModal }) => {
+const Modal = ({ showModal }: ModalProps) => {
   return (
     <AnimatePresence mode="wait">
       {showModal && (

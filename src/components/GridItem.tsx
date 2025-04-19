@@ -7,7 +7,15 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function GridItem(props) {
+interface GridItemProps {
+  title: string;
+  subheader: string;
+  image: string;
+  author: string
+  occupation: string
+}
+
+export default function GridItem(props: GridItemProps) {
   return (
     <Card>
       <CardHeader

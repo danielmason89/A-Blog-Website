@@ -3,13 +3,20 @@ import { useEffect } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 
 // components
-import BlogDetails from "../components/BlogpostDetails";
+import BlogDetails, { type Blogpost } from "../components/BlogpostDetails";
 import { Container } from "@mui/material";
 import Shimmer from "../components/Shimmer";
-import HeroSection from "../components/HeroSection";
+import HeroSection from "../components/HeroSection.tsx";
 
-const Home = ({ setShowModal }) => {
-  const { blogposts, dispatch } = useBlogpostsContext();
+interface HomeProps {
+  setShowModal: (value: boolean) => void;
+}
+
+const Home = ({ setShowModal }: HomeProps) => {
+  const { blogposts, dispatch } = useBlogpostsContext() as {
+    blogposts: Blogpost[] | null;
+    dispatch: React.Dispatch<any>;
+  };
 
   const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogposts";
 
@@ -30,13 +37,19 @@ const Home = ({ setShowModal }) => {
         {error && <div>{error}</div>}
         {isPending && <Shimmer />}
         {blogposts &&
-          blogposts.map((blogpost) => (
+          blogposts.map((blogpost: Blogpost) => {
+            const { title, author, createdAt, _id } = blogpost;
+            return (
             <BlogDetails
-              key={blogpost._id}
+              key={_id}
+              title={title}
+              author={author}
+              createdAt={createdAt}
               blogpost={blogpost}
               setShowModal={setShowModal}
             />
-          ))}
+            );
+          })}
       </Container>
     </Container>
   );

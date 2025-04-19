@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
+import { useRef, useState } from "react";
+import { useBlogpostsContext } from "../hooks/useBlogpostsContext.tsx";
 import { Button, Typography, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useAuthContext } from "../hooks/useAuthContext";
-
-// import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext.tsx";
 
 const BlogpostForm = () => {
   const { dispatch } = useBlogpostsContext();
@@ -16,8 +14,16 @@ const BlogpostForm = () => {
   const [error, setError] = useState<string | null>(null);
   const [emptyFields, setEmptyFields] = useState<string[]>([]);
 
+  const authorRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
+  const bodyRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // const enteredAuthor = authorRef.current!.value;
+    // const enteredTitle = titleRef.current!.value;
+    // const enteredBody = bodyRef.current!.value;
+
     if (!user) {
       setError("You must be logged in");
       return;
@@ -70,6 +76,7 @@ const BlogpostForm = () => {
             label="Enter Blog Title"
             onChange={(e) => setTitle(e.target.value)}
             className={emptyFields.includes("title") ? "error" : ""}
+            ref={titleRef}
           />
           <TextField
             color="secondary"
@@ -80,6 +87,7 @@ const BlogpostForm = () => {
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             className={emptyFields.includes("author") ? "error" : ""}
+            ref={authorRef}
           />
         </div>
         <TextField
@@ -92,6 +100,7 @@ const BlogpostForm = () => {
           minRows={4}
           onChange={(e) => setBody(e.target.value)}
           className={emptyFields.includes("body") ? "error" : ""}
+          ref={bodyRef}
         />
         {!IsPending && (
           <Button type="submit" color="secondary" variant="contained">

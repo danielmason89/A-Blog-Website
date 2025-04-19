@@ -11,16 +11,20 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { formatDistanceToNow } from "date-fns";
 import Loader from "./Loader";
 
-interface BlogPost {
+export interface Blogpost {
   _id: string;
   title: string;
   author: string;
-  content: string;
-  createdAt: string
+  blogpost: string;
+  createdAt: string;
 }
 
 interface BlogPostProps {
-  blogpost: BlogPost
+  title: string;
+  author: string;
+  createdAt: string;
+  blogpost: Blogpost;
+  setShowModal: (value: boolean) => void;
 }
 
 const BlogDetails = ({ blogpost }: BlogPostProps ) => {

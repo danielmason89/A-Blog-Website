@@ -1,7 +1,7 @@
 import { Button, Container, Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
-import { useLogout } from "../hooks/useLogout";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/useLogout.tsx";
+import { useAuthContext } from "../hooks/useAuthContext.tsx";
 import { Link } from "react-router-dom";
 
 interface SideBarProps {
@@ -132,17 +132,6 @@ const SideBar = ({ toggleSideBar }: SideBarProps) => {
                   }}
                 >
                   Subscribe
-                </Link>
-                <Link
-                  to="/"
-                  style={{
-                    paddingRight: "1rem",
-                    display: "block",
-                    textAlign: "center",
-                    width: "100%",
-                  }}
-                >
-                  Home
                 </Link>
               </>
             )}

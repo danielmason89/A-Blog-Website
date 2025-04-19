@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
-import MainGridItem from "./MainGridItem";
-import GridItem from "./GridItem";
+import MainGridItem from "./MainGridItem.tsx";
+import GridItem from "./GridItem.tsx";
 import profileImage from "../images/HeroDanielMason.webp";
 import profileImage2 from "../images/HeroChrisDiaz.webp";
 

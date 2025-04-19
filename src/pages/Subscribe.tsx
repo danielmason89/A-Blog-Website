@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { useSubscribe } from "../hooks/useSubscribe";
+import { FormEvent, useState } from "react";
+import { useSubscribe } from "../hooks/useSubscribe.tsx";
 
 const Subscribe = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { subscribe, error, isLoading } = useSubscribe();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!email || !password) {

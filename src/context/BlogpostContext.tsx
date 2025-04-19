@@ -1,4 +1,4 @@
-import { createContext, useReducer, ReactNode } from "react";
+import { createContext, useReducer, type ReactNode } from "react";
 
 interface Blogpost {
   _id: string;

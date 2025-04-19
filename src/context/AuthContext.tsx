@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect, ReactNode } from "react";   
+import React, { createContext, useReducer, useEffect, type ReactNode } from "react";   
 
 interface User {
   email: string;

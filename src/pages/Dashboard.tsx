@@ -1,5 +1,5 @@
 import useFetch from "../useFetch.ts";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext.tsx";
 import { useAuthContext } from "../hooks/useAuthContext.tsx";
 
@@ -18,12 +18,21 @@ const Dashboard = ({ setShowModal }: DashboardProps) => {
     blogposts: Blogpost[] | null;
     dispatch: React.Dispatch<any>;
   };
+
   const { user } = useAuthContext();
-  const { isPending, error } = useFetch(
+  
+  const authHeaders = useMemo(
+    () => user ? { Authorization: `Bearer ${user.token}` } : undefined,
+    [user?.token]
+  );
+
+  const { data, isPending, error } = useFetch(
     user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
-    {
-      Authorization: `Bearer ${user?.token}`,
-    }
+    authHeaders
+  );
+
+  const { } = useFetch(
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
   );
 
   //   const handleDelete = (id) => {
@@ -32,25 +41,10 @@ const Dashboard = ({ setShowModal }: DashboardProps) => {
   //   };
 
   useEffect(() => {
-    const fetchBlogposts = async () => {
-      const response = await fetch(
-        "https://gentle-plateau-25780.herokuapp.com/api/blogposts",
-        {
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-          },
-        }
-      );
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: "SET_BLOGPOSTS", payload: json });
-      }
-    };
-    if (user) {
-      fetchBlogposts();
+    if (data) {
+      dispatch({ type: 'SET_BLOGPOSTS', payload: data });
     }
-  }, [dispatch, user]);
+  }, [data, dispatch]);
 
   return (
     <Container className="home">
@@ -58,10 +52,9 @@ const Dashboard = ({ setShowModal }: DashboardProps) => {
         {error && <div>{error}</div>}
         {isPending && <Shimmer />}
         {blogposts &&
-          blogposts.map((blogpost: Blogpost) => {
+          blogposts?.map((blogpost: Blogpost) => {
              const { title, author, createdAt, _id } = blogpost;
              return (
-
                <BlogDetails
                key={_id}
                title={title}

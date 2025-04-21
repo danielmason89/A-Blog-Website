@@ -3,7 +3,7 @@ import MainGridItem from "./MainGridItem.tsx";
 import GridItem from "./GridItem.tsx";
 import profileImage from "../images/HeroDanielMason.webp";
 import profileImage2 from "../images/HeroChrisDiaz.webp";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 
 export default function HeroSection() {
   const authors = [

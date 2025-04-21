@@ -127,7 +127,6 @@ article {
 .main-container {
   height: 50lvh;
   padding-top: 2rem;
-  width: 50lvw;
   background-image: url("./images/pexels-ivan-samkov-4240497.jpg");
   background-size: cover;
   background-repeat: no-repeat;

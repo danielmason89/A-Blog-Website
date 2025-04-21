@@ -1,8 +1,9 @@
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import MainGridItem from "./MainGridItem.tsx";
 import GridItem from "./GridItem.tsx";
 import profileImage from "../images/HeroDanielMason.webp";
 import profileImage2 from "../images/HeroChrisDiaz.webp";
+import Grid from "@mui/material/Grid2";
 
 export default function HeroSection() {
   const authors = [
@@ -12,10 +13,10 @@ export default function HeroSection() {
 
   return (
     <Grid container spacing={3}>
-      <Grid item lg={12} sm={12} xs={12}>
+      <Grid size={{ lg: 12, sm: 12, xs: 12 }}>
         <MainGridItem />
       </Grid>
-      <Grid item md={6} sm={12} xs={12}>
+      <Grid size={{ md:6, sm: 12, xs: 12 }}>
         <GridItem
           title="About Us."
           subheader="Two software developers, passionate about sharing our tech journey and experiences."
@@ -24,7 +25,7 @@ export default function HeroSection() {
           occupation={authors[0].occupation}
         />
       </Grid>
-      <Grid item md={6} sm={12} xs={12}>
+      <Grid size={{ md: 6, sm: 12, xs: 12 }}>
         <Typography className="second-second-item" variant="body1" component="div">
           <GridItem
             title="Our Mission."

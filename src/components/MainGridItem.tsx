@@ -1,4 +1,5 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 export default function MainGridItem() {
   const subscribeUser = () => {
@@ -8,9 +9,7 @@ export default function MainGridItem() {
   return (
     <Grid container className="main-container">
       <Grid
-        md={8}
-        lg={6}
-        item
+        size={{ md: 8, lg: 6 }}
         sx={{
           padding: "2rem",
           textAlign: "left",

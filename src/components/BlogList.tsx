@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { Link } from "react-router-dom";
 
 interface Blog {
@@ -14,7 +14,7 @@ interface BlogListProps {
 
 const BlogList = ({ blogs, title }: BlogListProps) => {
   return (
-    <Grid item sm={4} xs={4} lg={12} className="blog-list">
+    <Grid size={{ sm: 4, xs: 4, lg: 12 }} className="blog-list">
       <h2>{title}</h2>
       {blogs.map((blog) => (
         <div className="blog-preview" key={blog.id}>

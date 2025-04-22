@@ -1,5 +1,5 @@
 import useFetch from "../useFetch";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useBlogpostsContext } from "../hooks/useBlogpostsContext";
 
 // components
@@ -18,9 +18,16 @@ const Home = ({ setShowModal }: HomeProps) => {
     dispatch: React.Dispatch<any>;
   };
 
+  const headers = useMemo(
+  () => {
+    const token = localStorage.getItem("token") || "";
+    return { Authorization: `Bearer ${token}` };
+  },
+  []
+   );
+  
   const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogposts";
-
-  const { isPending, error, data } = useFetch(fetchUrl);
+  const { isPending, error, data } = useFetch(fetchUrl, headers);
 
   useEffect(() => {
     if (data) {

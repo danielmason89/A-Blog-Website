@@ -27,12 +27,12 @@ const Dashboard = ({ setShowModal }: DashboardProps) => {
   );
 
   const { data, isPending, error } = useFetch(
-    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogpost" : "",
     authHeaders
   );
 
   const { } = useFetch(
-    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogposts" : "",
+    user ? "https://gentle-plateau-25780.herokuapp.com/api/blogpost" : "",
   );
 
   //   const handleDelete = (id) => {

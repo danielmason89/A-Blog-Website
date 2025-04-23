@@ -33,7 +33,7 @@ const BlogDetails = ({ blogpost }: BlogPostProps ) => {
   const headers = useMemo(() => {
     return user?.token ? { Authorization: `Bearer ${user.token}` } : {};
   }, [user?.token]);
-  const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogposts/";
+  const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogpost/";
   const { data: blog, error, isPending } = useFetch(fetchUrl, headers);
 
   const detailsBlogPost = async () => {

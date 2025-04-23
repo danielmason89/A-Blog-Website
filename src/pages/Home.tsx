@@ -26,7 +26,7 @@ const Home = ({ setShowModal }: HomeProps) => {
   []
    );
   
-  const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogposts";
+  const fetchUrl = "https://gentle-plateau-25780.herokuapp.com/api/blogpost";
   const { isPending, error, data } = useFetch(fetchUrl, headers);
 
   useEffect(() => {

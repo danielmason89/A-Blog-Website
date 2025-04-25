@@ -44,8 +44,11 @@ const Home = ({ setShowModal }: HomeProps) => {
         {error && <div>{error}</div>}
         {isPending && <Shimmer />}
         {blogposts &&
-          blogposts.map((blogpost: Blogpost) => {
+          blogposts
+          .slice(0, 3) 
+          .map((blogpost: Blogpost) => {
             const { title, author, createdAt, _id } = blogpost;
+            console.log(blogpost.author);
             return (
             <BlogDetails
               key={_id}

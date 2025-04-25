@@ -14,20 +14,21 @@ import Loader from "./Loader";
 export interface Blogpost {
   _id: string;
   title: string;
-  author: string;
+  author: { _id: string; email: string };
   blogpost: string;
   createdAt: string;
 }
 
 interface BlogPostProps {
   title: string;
-  author: string;
+  author: { _id: string; email: string };
   createdAt: string;
   blogpost: Blogpost;
   setShowModal: (value: boolean) => void;
 }
 
 const BlogDetails = ({ blogpost }: BlogPostProps ) => {
+  const { title, author, createdAt } = blogpost;
   const { user } = useAuthContext();
   const { dispatch } = useBlogpostsContext();
   const headers = useMemo(() => {
@@ -90,13 +91,13 @@ const BlogDetails = ({ blogpost }: BlogPostProps ) => {
       {blog && (
         <article>
           <Typography variant="h3" align="left">
-            {blogpost.title}
+            {title}
           </Typography>
           <Typography variant="subtitle1">
-            <strong>Written by {blogpost.author}</strong>
+            <strong>Written by {author.email}</strong>
           </Typography>
           <Typography variant="subtitle2">
-            {formatDistanceToNow(new Date(blogpost.createdAt), {
+            {formatDistanceToNow(new Date(createdAt), {
               addSuffix: true,
             })}
           </Typography>

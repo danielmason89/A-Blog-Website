@@ -12,7 +12,7 @@ interface HomeProps {
   setShowModal: (value: boolean) => void;
 }
 
-const Home = ({ setShowModal }: HomeProps) => {
+export default function Home({ setShowModal }: HomeProps) {
   const { blogposts, dispatch } = useBlogpostsContext() as {
     blogposts: Blogpost[] | null;
     dispatch: React.Dispatch<any>;
@@ -64,5 +64,3 @@ const Home = ({ setShowModal }: HomeProps) => {
     </Container>
   );
 };
-
-export default Home;

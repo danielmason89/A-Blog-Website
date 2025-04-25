@@ -11,7 +11,7 @@ import Footer from "./components/Footer.tsx";
 import { useAuthContext } from "./hooks/useAuthContext.tsx";
 import Home from "./pages/Home.tsx";
 
-function App() {
+export default function App() {
   const { user } = useAuthContext();
   const location = useLocation();
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -50,5 +50,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
